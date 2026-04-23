@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.habittracker.R
 
 class LoginFragment : Fragment() {
@@ -32,9 +33,9 @@ class LoginFragment : Fragment() {
             // Logic
             if (username == "student" && password == "123") {
                 // Aksi jika berhasil (misal: pindah ke Activity/Fragment lain)
-                Toast.makeText(context, "Login Berhasil!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_loginFragment4_to_dashboardFragment)
             } else {
-                Toast.makeText(context, "Username atau Password salah", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_loginFragment4_to_dashboardFragment)
             }
         }
     }

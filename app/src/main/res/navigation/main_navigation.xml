@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_navigation">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/loginFragment4">
+    <fragment
+        android:id="@+id/loginFragment4"
+        android:name="LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment4_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.habittracker.DashboardFragment"
+        android:label="DashboardFragment" />
 </navigation>
