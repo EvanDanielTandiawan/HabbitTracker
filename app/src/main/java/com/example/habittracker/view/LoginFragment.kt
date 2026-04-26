@@ -11,7 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.habittracker.databinding.FragmentLoginBinding
 import com.example.habittracker.viewmodel.LoginViewModel
 
-class LoginFragment : Fragment() {
+class
+LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
