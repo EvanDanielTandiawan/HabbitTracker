@@ -1,6 +1,17 @@
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        val nav_version = "2.7.1"
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+    }
+}
+
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
 
 }
@@ -12,7 +23,7 @@ android {
     defaultConfig {
         applicationId = "com.example.habittracker"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -43,6 +54,7 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.coroutinesCore)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
@@ -63,4 +75,5 @@ dependencies {
     implementation(libs.androidx.recyclerview)
 // Material Design
     implementation(libs.material.v1110)
+    implementation(libs.androidx.swiperefreshlayout)
 }
