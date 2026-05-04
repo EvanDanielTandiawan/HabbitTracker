@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
-        setContentView(view)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.loginLayout) as NavHostFragment
         navController = navHostFragment.navController

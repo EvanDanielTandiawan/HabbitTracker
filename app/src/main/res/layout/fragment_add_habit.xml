@@ -64,7 +64,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -74,70 +74,74 @@
                     android:hint="Habbit Name"
                     android:singleLine="true" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="12dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtInputDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Short Description"
-                        android:inputType="textMultiLine"
-                        android:maxLines="5"
-                        android:minLines="3"
-                        android:nestedScrollingEnabled="false" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="12dp">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txtInputGoal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Goal"
-                            android:inputType="number" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="102dp"
-                            android:layout_marginBottom="12dp">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/txtInputUnit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Unit" />
-
-                            <TextView
-                                android:id="@+id/txtSelectIcon"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Select Icon" />
-
-                            <Spinner
-                                android:id="@+id/spinnerIcon"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <Button
-                            android:id="@+id/btnCreateHabit"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginTop="16dp"
-                            android:text="Create Habit" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </com.google.android.material.textfield.TextInputLayout>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtInputDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Short Description"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:minLines="3"
+                    android:nestedScrollingEnabled="false" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtInputGoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Goal"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="102dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtInputUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Unit" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdownLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Icon"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/listIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnCreateHabit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:text="Create Habit" />
+
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

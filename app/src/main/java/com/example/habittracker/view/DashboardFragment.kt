@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.habittracker.R
 import com.example.habittracker.databinding.FragmentDashboardBinding
@@ -50,6 +51,10 @@ class DashboardFragment : Fragment() {
             }
         })
 
+        binding.btnAddHabit.setOnClickListener {
+            val action = DashboardFragmentDirections.actionDashboardFragment2ToAddHabitFragment3()
+            findNavController().navigate(action)
+        }
     }
 
 }
