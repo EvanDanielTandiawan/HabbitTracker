@@ -1,26 +1,27 @@
 package com.example.habittracker.view
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.habittracker.R
+import com.example.habittracker.databinding.ActivityMainBinding
 import com.example.habittracker.databinding.FragmentLoginBinding
 import com.example.habittracker.viewmodel.LoginViewModel
 
-class
-LoginFragment : Fragment() {
-
+class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Menghubungkan layout fragment_login.xml
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,7 +43,7 @@ LoginFragment : Fragment() {
         viewModel.statusLoginLD.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
                 // Jika sukses, baru navigasi
-                val action = LoginFragmentDirections.actionLoginFragment4ToDashboardFragment()
+                val action = LoginFragmentDirections.actionLoginFragmentToDashboardFragment2()
                 findNavController().navigate(action)
             } else {
                 // Jika gagal, tampilkan toast

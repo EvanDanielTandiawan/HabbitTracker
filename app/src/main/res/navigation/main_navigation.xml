@@ -3,17 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/loginFragment4">
+    app:startDestination="@id/loginFragment">
     <fragment
-        android:id="@+id/loginFragment4"
+        android:id="@+id/loginFragment"
         android:name="com.example.habittracker.view.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/action_loginFragment4_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
+            android:id="@+id/action_loginFragment_to_dashboardFragment2"
+            app:destination="@id/dashboardFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dashboardFragment2"
+        android:name="com.example.habittracker.view.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment2_to_addHabitFragment3"
+            app:destination="@id/addHabitFragment3" />
+        <action
+            android:id="@+id/action_dashboardFragment2_to_addHabitFragment32"
+            app:destination="@id/addHabitFragment3" />
     </fragment>
     <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="com.example.habittracker.view.DashboardFragment"
-        android:label="DashboardFragment" />
+        android:id="@+id/addHabitFragment3"
+        android:name="com.example.habittracker.view.AddHabitFragment"
+        android:label="fragment_add_habit"
+        tools:layout="@layout/fragment_add_habit" />
 </navigation>
