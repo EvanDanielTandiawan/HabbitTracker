@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,9 +18,10 @@ import com.example.habittracker.viewmodel.LoginViewModel
 
 class DashboardFragment : Fragment() {
     private lateinit var binding: FragmentDashboardBinding
-    private lateinit var viewModel: ListViewModel
-    private val habitListAdapter  = HabitListAdapter(arrayListOf())
-
+    private val viewModel: ListViewModel by activityViewModels()
+    private val habitListAdapter by lazy {
+        HabitListAdapter(arrayListOf(), viewModel)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +33,6 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
 
         binding.recViewHabit.layoutManager = LinearLayoutManager(context)
         binding.recViewHabit.adapter = habitListAdapter
