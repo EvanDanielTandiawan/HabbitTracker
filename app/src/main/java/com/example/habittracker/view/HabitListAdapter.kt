@@ -25,6 +25,13 @@ class HabitListAdapter(
         holder.binding.txtName.text = habit.name
         holder.binding.txtDesc.text = habit.description
 
+        val resId = holder.itemView.context.resources.getIdentifier(
+            habit.icon,
+            "drawable",
+            holder.itemView.context.packageName
+        )
+        holder.binding.imgIcon.setImageResource(resId)
+
         holder.binding.progressBar.max = habit.goal
         holder.binding.progressBar.progress = habit.progress
 
@@ -35,6 +42,7 @@ class HabitListAdapter(
             holder.binding.txtStatus.text = "In Progress"
             holder.binding.btnPlus.isEnabled = true
         }
+        holder.binding.txtValue.text = "${habit.progress} / ${habit.goal} ${habit.unit}"
 
         holder.binding.btnPlus.setOnClickListener {
             if (habit.progress < habit.goal) {
