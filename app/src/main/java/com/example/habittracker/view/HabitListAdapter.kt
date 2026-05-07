@@ -1,8 +1,12 @@
 package com.example.habittracker.view
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.habittracker.R
 import com.example.habittracker.databinding.ItemHabitBinding
 import com.example.habittracker.model.Habit
 import com.example.habittracker.viewmodel.ListViewModel
@@ -38,9 +42,25 @@ class HabitListAdapter(
         if (habit.progress >= habit.goal) {
             holder.binding.txtStatus.text = "Completed"
             holder.binding.btnPlus.isEnabled = false
+
+            val Green = ContextCompat.getColor(holder.itemView.context, R.color.green)
+            val colorWhite = ContextCompat.getColor(holder.itemView.context, R.color.white)
+
+            holder.binding.txtStatus.backgroundTintList = ColorStateList.valueOf(Green)
+            holder.binding.txtStatus.setTextColor(colorWhite)
+            holder.binding.progressBar.progressTintList = ColorStateList.valueOf(Green)
         } else {
             holder.binding.txtStatus.text = "In Progress"
             holder.binding.btnPlus.isEnabled = true
+
+            val Gray = ContextCompat.getColor(holder.itemView.context, R.color.gray)
+            val Black = ContextCompat.getColor(holder.itemView.context, R.color.black)
+            val Purple = ContextCompat.getColor(holder.itemView.context, R.color.purple)
+
+            holder.binding.txtStatus.backgroundTintList = ColorStateList.valueOf(Gray)
+            holder.binding.txtStatus.setTextColor(Black)
+            holder.binding.progressBar.progressTintList = ColorStateList.valueOf(Purple)
+
         }
         holder.binding.txtValue.text = "${habit.progress} / ${habit.goal} ${habit.unit}"
 
