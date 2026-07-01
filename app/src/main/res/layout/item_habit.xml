@@ -1,132 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
 
-        <!-- TOP ROW -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="12dp">
 
-            <!-- ICON -->
-            <ImageView
-                android:id="@+id/imgIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_launcher_foreground" />
-
-            <!-- TEXT -->
+            <!-- TOP ROW -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="8dp">
+                android:orientation="horizontal">
 
+                <!-- ICON -->
+                <ImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <!-- TEXT -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        tools:text="Drink Water" />
+
+                    <TextView
+                        android:id="@+id/txtDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="12sp"
+                        tools:text="Stay hydrated throughout the day" />
+                </LinearLayout>
+
+                <!-- STATUS -->
                 <TextView
-                    android:id="@+id/txtName"
+                    android:id="@+id/txtStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    tools:text="Drink Water" />
-
-                <TextView
-                    android:id="@+id/txtDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/darker_gray"
                     android:textSize="12sp"
-                    tools:text="Stay hydrated throughout the day" />
+                    android:background="@drawable/bg_status"
+                    android:padding="6dp"
+                    tools:text="In Progress" />
             </LinearLayout>
 
-            <!-- STATUS -->
-            <TextView
-                android:id="@+id/txtStatus"
+            <!-- PROGRESS LABEL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/txtProgress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp"
+                    tools:text="Progress" />
+
+                <TextView
+                    android:id="@+id/txtValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+                    tools:text="3 / 8 glasses" />
+            </LinearLayout>
+
+            <!-- VALUE -->
+
+            <!-- PROGRESS BAR -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="4dp" />
+
+            <!-- BUTTON -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:background="@drawable/bg_status"
-                android:padding="6dp"
-                tools:text="In Progress" />
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:height="5dp"
+                    android:elegantTextHeight="false"
+                    android:minWidth="55dp"
+                    android:minHeight="48dp"
+                    android:text="-" />
+
+                <Button
+                    android:id="@+id/btnPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="55dp"
+                    android:text="+" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- PROGRESS LABEL -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:id="@+id/txtProgress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="12sp"
-                tools:text="Progress" />
-
-            <TextView
-                android:id="@+id/txtValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                tools:text="3 / 8 glasses" />
-        </LinearLayout>
-
-        <!-- VALUE -->
-
-        <!-- PROGRESS BAR -->
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:layout_marginTop="4dp" />
-
-        <!-- BUTTON -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="8dp">
-
-            <Button
-                android:id="@+id/btnMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:height="5dp"
-                android:elegantTextHeight="false"
-                android:minWidth="55dp"
-                android:minHeight="48dp"
-                android:text="-" />
-
-            <Button
-                android:id="@+id/btnPlus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:minWidth="55dp"
-                android:text="+" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
