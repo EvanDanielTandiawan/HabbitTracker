@@ -12,5 +12,5 @@ data class Login(
     var password:String
 ) {
     @PrimaryKey(autoGenerate = true)
-    var id:Int =0
+    var uuid:Int =0
 }

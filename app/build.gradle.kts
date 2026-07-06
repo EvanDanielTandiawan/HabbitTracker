@@ -15,10 +15,13 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
 
-
 }
 
 android {
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
     namespace = "com.example.habittracker"
     compileSdk = 36
 
@@ -48,9 +51,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        dataBinding = true
-    }
+
 }
 
 dependencies {
@@ -64,6 +65,8 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.annotation)
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -85,6 +88,5 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     kapt(libs.room.compiler)
-
 
 }

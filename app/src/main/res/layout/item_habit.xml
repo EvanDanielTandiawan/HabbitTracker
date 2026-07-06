@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="habit"
+            type="com.example.habittracker.model.Habit" />
+
+        <variable
+            name="listener"
+            type="com.example.habittracker.view.ItemHabitListener" />
 
     </data>
 
@@ -48,7 +55,7 @@
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
-                        tools:text="Drink Water" />
+                        tools:text="@{habit.name}"/>
 
                     <TextView
                         android:id="@+id/txtDesc"
@@ -56,7 +63,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="12sp"
-                        tools:text="Stay hydrated throughout the day" />
+                        tools:text="@{habit.description}"/>
                 </LinearLayout>
 
                 <!-- STATUS -->
@@ -68,7 +75,7 @@
                     android:textSize="12sp"
                     android:background="@drawable/bg_status"
                     android:padding="6dp"
-                    tools:text="In Progress" />
+                    tools:text="@{habit.status}" />
             </LinearLayout>
 
             <!-- PROGRESS LABEL -->
@@ -93,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
-                    tools:text="3 / 8 glasses" />
+                    tools:text='@{String.valueOf(habit.progress) + " / " + String.valueOf(habit.goal) + " " + habit.unit}' />
             </LinearLayout>
 
             <!-- VALUE -->

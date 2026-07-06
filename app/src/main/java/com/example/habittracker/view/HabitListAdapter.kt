@@ -3,6 +3,7 @@ package com.example.habittracker.view
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,11 @@ import com.example.habittracker.R
 import com.example.habittracker.databinding.ItemHabitBinding
 import com.example.habittracker.model.Habit
 import com.example.habittracker.viewmodel.ListViewModel
+import kotlin.collections.minusAssign
+import kotlin.collections.plusAssign
+import kotlin.compareTo
+import kotlin.ranges.step
+import kotlin.text.compareTo
 
 class HabitListAdapter(
     val habitList: ArrayList<Habit>,
@@ -25,9 +31,11 @@ class HabitListAdapter(
 
     override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
         val habit = habitList[position]
+        holder.binding.habit = habit
+        holder.binding.listener = this
 
-        holder.binding.txtName.text = habit.name
-        holder.binding.txtDesc.text = habit.description
+//        holder.binding.txtName.text = habit.name
+//        holder.binding.txtDesc.text = habit.description
 
         val resId = holder.itemView.context.resources.getIdentifier(
             habit.icon,
@@ -35,12 +43,13 @@ class HabitListAdapter(
             holder.itemView.context.packageName
         )
         holder.binding.imgIcon.setImageResource(resId)
-
-        holder.binding.progressBar.max = habit.goal
-        holder.binding.progressBar.progress = habit.progress
+//
+//        holder.binding.progressBar.max = habit.goal
+//        holder.binding.progressBar.progress = habit.progress
+        holder.binding.txtStatus.text = habit.status
 
         if (habit.progress >= habit.goal) {
-            holder.binding.txtStatus.text = "Completed"
+//            holder.binding.txtStatus.text = "Completed"
             holder.binding.btnPlus.isEnabled = false
 
             val Green = ContextCompat.getColor(holder.itemView.context, R.color.green)
@@ -50,7 +59,7 @@ class HabitListAdapter(
             holder.binding.txtStatus.setTextColor(colorWhite)
             holder.binding.progressBar.progressTintList = ColorStateList.valueOf(Green)
         } else {
-            holder.binding.txtStatus.text = "In Progress"
+//            holder.binding.txtStatus.text = "In Progress"
             holder.binding.btnPlus.isEnabled = true
 
             val Gray = ContextCompat.getColor(holder.itemView.context, R.color.gray)
@@ -62,25 +71,48 @@ class HabitListAdapter(
             holder.binding.progressBar.progressTintList = ColorStateList.valueOf(Purple)
 
         }
-        holder.binding.txtValue.text = "${habit.progress} / ${habit.goal} ${habit.unit}"
+//        holder.binding.txtValue.text = "${habit.progress} / ${habit.goal} ${habit.unit}"
 
-        holder.binding.btnPlus.setOnClickListener {
-            if (habit.progress < habit.goal) {
-                habit.progress += 1
-                viewModel.updateHabit(position, habit)
-            }
-        }
-
-        holder.binding.btnMinus.setOnClickListener {
-            if (habit.progress > 0) {
-                habit.progress -= 1
-                viewModel.updateHabit(position, habit)
-            }
-        }
+//        holder.binding.btnPlus.setOnClickListener {
+//            if (habit.progress < habit.goal) {
+//                habit.progress += 1
+//                viewModel.updateHabit(position, habit)
+//            }
+//        }
+//
+//        holder.binding.btnMinus.setOnClickListener {
+//            if (habit.progress > 0) {
+//                habit.progress -= 1
+//                viewModel.updateHabit(position, habit)
+//            }
+//        }
     }
 
     override fun getItemCount(): Int {
         return habitList.size
+    }
+    override fun onPlusClick(v: View, habit: Habit) {
+        if (habit.progress < habit.goal) {
+            habit.progress += 1
+
+            val position = habitList.indexOf(habit)
+            if (position != -1) {
+                viewModel.updateHabit(habit)
+                notifyItemChanged(position)
+            }
+        }
+    }
+
+    override fun onMinusClick(v: View, habit: Habit) {
+        if (habit.progress > 0) {
+            habit.progress -= 1
+
+            val position = habitList.indexOf(habit)
+            if (position != -1) {
+                viewModel.updateHabit(habit)
+                notifyItemChanged(position)
+            }
+        }
     }
 
     fun updateHabitList(newList: ArrayList<Habit>) {
