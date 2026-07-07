@@ -11,8 +11,6 @@ import com.example.habittracker.model.Habit
 @Dao
 interface HabitDAO {
 
-    @Insert
-    fun insertHabit(habit: Habit)
 
     @Query("SELECT * FROM Habit")
     fun getAllHabits(): List<Habit>
@@ -20,6 +18,8 @@ interface HabitDAO {
     @Query("SELECT * FROM Habit WHERE uuid = :uuid LIMIT 1")
     fun getHabitById(uuid: Int): Habit?
 
+    @Insert
+    fun insertHabit(habit: Habit)
     @Update
     fun updateHabit(habit: Habit)
 

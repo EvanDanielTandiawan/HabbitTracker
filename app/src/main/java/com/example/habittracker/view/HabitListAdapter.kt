@@ -32,7 +32,6 @@ class HabitListAdapter(
     override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
         val habit = habitList[position]
         holder.binding.habit = habit
-        holder.binding.listener = this
 
 //        holder.binding.txtName.text = habit.name
 //        holder.binding.txtDesc.text = habit.description

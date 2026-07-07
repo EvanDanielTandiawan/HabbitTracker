@@ -12,6 +12,7 @@
             name="listener"
             type="com.example.habittracker.view.ItemHabitListener" />
 
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -113,6 +114,8 @@
                 android:layout_height="6dp"
                 android:layout_marginTop="4dp" />
 
+
+
             <!-- BUTTON -->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -122,6 +125,8 @@
 
                 <Button
                     android:id="@+id/btnMinus"
+                    android:onClick="@{(v) -> listener.onMinusClick(v, habit)}"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -133,6 +138,7 @@
 
                 <Button
                     android:id="@+id/btnPlus"
+                    android:onClick="@{(v) -> listener.onPlusClick(v, habit)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
