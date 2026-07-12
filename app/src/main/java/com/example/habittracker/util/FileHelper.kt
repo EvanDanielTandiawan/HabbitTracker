@@ -1,6 +1,7 @@
 package com.example.habittracker.util
 
 import android.content.Context
+import com.example.habittracker.database.HabitTrackerDatabase
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -9,6 +10,9 @@ class FileHelper(val context: Context) {
 
     private val folderName = "habit_folder"
     private val fileName = "habit_data.json"
+
+
+
 
     private fun getFile(): File {
         val dir = File(context.filesDir, folderName)
