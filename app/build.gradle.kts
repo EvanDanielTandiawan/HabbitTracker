@@ -53,40 +53,38 @@ android {
     }
 
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.coroutinesCore)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.annotation)
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.material.v1110)
 
-    // Navigation
+
+    implementation(libs.coroutinesCore)
+    implementation("com.google.code.gson:gson:2.10.1")
+
+
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-//    ViewModel & LiveData
+
+
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
-// RecyclerView
-    implementation(libs.androidx.recyclerview)
-// Material Design
-    implementation(libs.material.v1110)
-    implementation(libs.androidx.swiperefreshlayout)
 
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
+
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     kapt(libs.room.compiler)
 
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

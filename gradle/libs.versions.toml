@@ -23,6 +23,8 @@ cardview = "1.0.0"
 annotation = "1.10.0"
 swiperefreshlayout = "1.1.0"
 room = "2.6.1"
+navigationFragmentKtxVersion = "2.9.8"
+navigationUiKtxVersion = "2.9.8"
 
 [libraries]
 navigation-fragment-ktx = { group ="androidx.navigation", name="navigation-fragment-ktx", version.ref="navigationFragmentKTX"}
@@ -48,6 +50,8 @@ material-v1110 = { module = "com.google.android.material:material", version.ref 
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 coroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+androidx-navigation-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
+androidx-navigation-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtxVersion" }
 
 
 [plugins]
