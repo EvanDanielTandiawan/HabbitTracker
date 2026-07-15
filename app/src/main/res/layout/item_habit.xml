@@ -11,6 +11,9 @@
         <variable
             name="listener"
             type="com.example.habittracker.view.ItemHabitListener" />
+        <variable
+            name="editListener"
+            type="com.example.habittracker.view.EditHabitListener" />
 
 
     </data>
@@ -39,6 +42,9 @@
                     android:id="@+id/imgIcon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:onClick="@{(v) -> editListener.onClick(v)}"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:src="@drawable/ic_launcher_foreground" />
 
                 <!-- TEXT -->

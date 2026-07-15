@@ -15,21 +15,19 @@ abstract class HabitTrackerDatabase: RoomDatabase() {
     abstract fun loginDao(): LogiNDAO
     abstract fun habitDao(): HabitDAO
     companion object {
-        @Volatile private var instance: HabitTrackerDatabase ?= null
+        @Volatile private var instance: HabitTrackerDatabase? = null
         private val LOCK = Any()
-        val DB_NAME = null
+        private const val DB_NAME = "habittrakerdb"
 
-        fun buildDatabase(context: Context): Any? {
-
+        fun buildDatabase(context: Context): HabitTrackerDatabase {
             return Room.databaseBuilder(
                 context.applicationContext,
                 HabitTrackerDatabase::class.java,
                 DB_NAME).build()
         }
-    }
-    operator fun invoke(context:Context) {
-        if(instance != null) {
-            synchronized(LOCK) {
+
+        operator fun invoke(context: Context): HabitTrackerDatabase {
+            return instance ?: synchronized(LOCK) {
                 instance ?: buildDatabase(context).also {
                     instance = it
                 }

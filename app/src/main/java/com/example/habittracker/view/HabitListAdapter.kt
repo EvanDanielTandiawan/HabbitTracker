@@ -45,7 +45,7 @@ class HabitListAdapter(
 //
 //        holder.binding.progressBar.max = habit.goal
 //        holder.binding.progressBar.progress = habit.progress
-        holder.binding.txtStatus.text = habit.status
+        holder.binding.txtStatus.text = habit.getStatus()
 
         if (habit.progress >= habit.goal) {
 //            holder.binding.txtStatus.text = "Completed"
@@ -90,25 +90,25 @@ class HabitListAdapter(
     override fun getItemCount(): Int {
         return habitList.size
     }
-    override fun onPlusClick(v: View, habit: Habit) {
+    fun onPlusClick(v: View, habit: Habit) {
         if (habit.progress < habit.goal) {
             habit.progress += 1
 
             val position = habitList.indexOf(habit)
             if (position != -1) {
-                viewModel.updateHabit(habit)
+                viewModel.updateHabit(habit.uuid, habit)
                 notifyItemChanged(position)
             }
         }
     }
 
-    override fun onMinusClick(v: View, habit: Habit) {
+    fun onMinusClick(v: View, habit: Habit) {
         if (habit.progress > 0) {
             habit.progress -= 1
 
             val position = habitList.indexOf(habit)
             if (position != -1) {
-                viewModel.updateHabit(habit)
+                viewModel.updateHabit(habit.uuid, habit)
                 notifyItemChanged(position)
             }
         }
