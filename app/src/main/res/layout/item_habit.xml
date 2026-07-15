@@ -76,7 +76,7 @@
                     android:textSize="12sp"
                     android:background="@drawable/bg_status"
                     android:padding="6dp"
-                    tools:text="@{habit.status}" />
+                    tools:text="@{habit.getStatus()}" />
             </LinearLayout>
 
             <!-- PROGRESS LABEL -->
