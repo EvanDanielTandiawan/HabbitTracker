@@ -19,7 +19,8 @@ import kotlin.text.compareTo
 
 class HabitListAdapter(
     val habitList: ArrayList<Habit>,
-    val viewModel: ListViewModel
+    val viewModel: ListViewModel,
+    private val onEditClick: (Habit) -> Unit
 ) : RecyclerView.Adapter<HabitListAdapter.HabitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -32,6 +33,7 @@ class HabitListAdapter(
     override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
         val habit = habitList[position]
         holder.binding.habit = habit
+        holder.binding.executePendingBindings()
 
 //        holder.binding.txtName.text = habit.name
 //        holder.binding.txtDesc.text = habit.description
@@ -42,9 +44,12 @@ class HabitListAdapter(
             holder.itemView.context.packageName
         )
         holder.binding.imgIcon.setImageResource(resId)
+        holder.binding.txtName.setOnClickListener {
+            onEditClick(habit)
+        }
 //
-//        holder.binding.progressBar.max = habit.goal
-//        holder.binding.progressBar.progress = habit.progress
+        holder.binding.progressBar.max = habit.goal
+        holder.binding.progressBar.progress = habit.progress
         holder.binding.txtStatus.text = habit.getStatus()
 
         if (habit.progress >= habit.goal) {
@@ -70,48 +75,42 @@ class HabitListAdapter(
             holder.binding.progressBar.progressTintList = ColorStateList.valueOf(Purple)
 
         }
-//        holder.binding.txtValue.text = "${habit.progress} / ${habit.goal} ${habit.unit}"
+        holder.binding.txtValue.text = "${habit.progress} / ${habit.goal} ${habit.unit}"
 
-//        holder.binding.btnPlus.setOnClickListener {
-//            if (habit.progress < habit.goal) {
-//                habit.progress += 1
-//                viewModel.updateHabit(position, habit)
-//            }
-//        }
-//
-//        holder.binding.btnMinus.setOnClickListener {
-//            if (habit.progress > 0) {
-//                habit.progress -= 1
-//                viewModel.updateHabit(position, habit)
-//            }
-//        }
+        holder.binding.btnPlus.setOnClickListener {
+            if (habit.progress < habit.goal) {
+                habit.progress++
+
+                holder.binding.progressBar.progress = habit.progress
+                holder.binding.txtValue.text =
+                    "${habit.progress} / ${habit.goal} ${habit.unit}"
+
+                holder.binding.txtStatus.text = habit.getStatus()
+
+                viewModel.updateHabit(position, habit)
+                notifyItemChanged(position)
+            }
+        }
+
+
+        holder.binding.btnMinus.setOnClickListener {
+            if (habit.progress > 0) {
+                habit.progress--
+
+                holder.binding.progressBar.progress = habit.progress
+                holder.binding.txtValue.text =
+                    "${habit.progress} / ${habit.goal} ${habit.unit}"
+
+                holder.binding.txtStatus.text = habit.getStatus()
+
+                viewModel.updateHabit(habit.uuid, habit)
+                notifyItemChanged(position)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return habitList.size
-    }
-    fun onPlusClick(v: View, habit: Habit) {
-        if (habit.progress < habit.goal) {
-            habit.progress += 1
-
-            val position = habitList.indexOf(habit)
-            if (position != -1) {
-                viewModel.updateHabit(habit.uuid, habit)
-                notifyItemChanged(position)
-            }
-        }
-    }
-
-    fun onMinusClick(v: View, habit: Habit) {
-        if (habit.progress > 0) {
-            habit.progress -= 1
-
-            val position = habitList.indexOf(habit)
-            if (position != -1) {
-                viewModel.updateHabit(habit.uuid, habit)
-                notifyItemChanged(position)
-            }
-        }
     }
 
     fun updateHabitList(newList: ArrayList<Habit>) {

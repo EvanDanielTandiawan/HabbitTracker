@@ -20,7 +20,19 @@ class DashboardFragment : Fragment() {
     private lateinit var binding: FragmentDashboardBinding
     private val viewModel: ListViewModel by activityViewModels()
     private val habitListAdapter by lazy {
-        HabitListAdapter(arrayListOf(), viewModel)
+        HabitListAdapter(
+            arrayListOf(),
+            viewModel
+        ) { habit ->
+
+            val bundle = Bundle()
+            bundle.putSerializable("habit", habit)
+
+            findNavController().navigate(
+                R.id.editHabitFragment,
+                bundle
+            )
+        }
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -3,9 +3,11 @@ package com.example.habittracker.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "Habit")
 data class Habit(
+
     @ColumnInfo(name = "name")
     var name: String,
 
@@ -23,15 +25,16 @@ data class Habit(
 
     @ColumnInfo(name = "icon")
     var icon: String
-) {
+
+) : Serializable {
+
     @PrimaryKey(autoGenerate = true)
     var uuid: Int = 0
 
     fun getStatus(): String {
-        return if (progress >= goal) {
+        return if (progress >= goal)
             "Completed"
-        } else {
+        else
             "In Progress"
-        }
     }
 }

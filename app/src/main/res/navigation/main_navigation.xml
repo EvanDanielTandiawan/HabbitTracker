@@ -16,17 +16,26 @@
     <fragment
         android:id="@+id/dashboardFragment2"
         android:name="com.example.habittracker.view.DashboardFragment"
-        android:label="DashboardFragment" >
+        android:label="DashboardFragment">
+
         <action
             android:id="@+id/action_dashboardFragment2_to_addHabitFragment3"
             app:destination="@id/addHabitFragment3" />
+
         <action
-            android:id="@+id/action_dashboardFragment2_to_addHabitFragment32"
-            app:destination="@id/addHabitFragment3" />
+            android:id="@+id/action_dashboardFragment2_to_editHabitFragment"
+            app:destination="@id/editHabitFragment"/>
+
     </fragment>
     <fragment
         android:id="@+id/addHabitFragment3"
         android:name="com.example.habittracker.view.AddHabitFragment"
         android:label="fragment_add_habit"
         tools:layout="@layout/fragment_add_habit" />
+
+    <fragment
+        android:id="@+id/editHabitFragment"
+        android:name="com.example.habittracker.view.EditHabitFragment"
+        android:label="Edit Habit"
+        tools:layout="@layout/fragment_edit_habit" />
 </navigation>

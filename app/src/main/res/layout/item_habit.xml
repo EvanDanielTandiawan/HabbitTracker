@@ -131,24 +131,14 @@
 
                 <Button
                     android:id="@+id/btnMinus"
-                    android:onClick="@{(v) -> listener.onMinusClick(v, habit)}"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:height="5dp"
-                    android:elegantTextHeight="false"
-                    android:minWidth="55dp"
-                    android:minHeight="48dp"
                     android:text="-" />
 
                 <Button
                     android:id="@+id/btnPlus"
-                    android:onClick="@{(v) -> listener.onPlusClick(v, habit)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:minWidth="55dp"
                     android:text="+" />
             </LinearLayout>
 

@@ -36,12 +36,15 @@ class ListViewModel(application: Application)
         }
     }
 
-    fun updateHabit(index: Int, habit: Habit) {
+    fun updateHabit(uuid: Int, habit: Habit) {
         val currentList = habitsLD.value ?: return
 
-        currentList[index] = habit
+        val index = currentList.indexOfFirst { it.uuid == uuid }
 
-        habitsLD.value = currentList
+        if (index != -1) {
+            currentList[index] = habit
+            habitsLD.value = currentList
+        }
 
         launch {
             val db = HabitTrackerDatabase.buildDatabase(getApplication())
