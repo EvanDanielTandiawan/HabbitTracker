@@ -27,12 +27,11 @@ data class Habit(
     @PrimaryKey(autoGenerate = true)
     var uuid: Int = 0
 
-    val status: String
-        get() {
-            return if (progress >= goal) {
-                "Completed"
-            } else {
-                "In Progress"
-            }
+    fun getStatus(): String {
+        return if (progress >= goal) {
+            "Completed"
+        } else {
+            "In Progress"
         }
+    }
 }

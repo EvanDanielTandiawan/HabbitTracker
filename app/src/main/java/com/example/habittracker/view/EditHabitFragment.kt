@@ -67,27 +67,9 @@ class EditHabitFragment : Fragment() {
         val unit = binding.txtInputUnit.text.toString()
         val iconName = binding.listIcon.text.toString()
 
-        if (::habit.isInitialized) {
-            habit.name = name
-            habit.description = desc
-            habit.goal = goal
-            habit.unit = unit
-            habit.icon = iconName
+        viewModel.updateHabit(habit.uuid, habit)
 
-            viewModel.updateHabit(habit)
-        } else {
-            val newHabit = Habit(
-                name = name,
-                description = desc,
-                progress = 0,
-                goal = goal,
-                unit = unit,
-                icon = iconName
-            )
-            viewModel.addHabit(newHabit)
-        }
-
-        findNavController().popBackStack()
+        findNavController().navigateUp()
     }
 
 }

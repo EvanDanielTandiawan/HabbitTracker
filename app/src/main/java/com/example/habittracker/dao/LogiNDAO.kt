@@ -3,15 +3,14 @@ package com.example.habittracker.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.habittracker.model.Login // Pastikan import ini mengarah ke model Login yang baru
+import com.example.habittracker.model.Login
 
 @Dao
-interface LogiNDAO { // Tetap menggunakan nama LogiNDAO sesuai nama file kamu
+interface LogiNDAO {
 
-        @Insert(onConflict = OnConflictStrategy.REPLACE)
+        @Insert
         fun insertUser(login: Login)
 
         @Query("SELECT * FROM Login WHERE username = :username AND password = :password")
