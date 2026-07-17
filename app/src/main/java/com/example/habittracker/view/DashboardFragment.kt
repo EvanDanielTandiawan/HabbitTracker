@@ -68,6 +68,9 @@ class DashboardFragment : Fragment() {
             val action = DashboardFragmentDirections.actionDashboardFragment2ToAddHabitFragment3()
             findNavController().navigate(action)
         }
+
+
+
     }
 
 }

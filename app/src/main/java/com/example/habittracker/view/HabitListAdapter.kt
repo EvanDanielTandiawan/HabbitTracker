@@ -44,7 +44,7 @@ class HabitListAdapter(
             holder.itemView.context.packageName
         )
         holder.binding.imgIcon.setImageResource(resId)
-        holder.binding.txtName.setOnClickListener {
+        holder.binding.imgIcon.setOnClickListener {
             onEditClick(habit)
         }
 //
