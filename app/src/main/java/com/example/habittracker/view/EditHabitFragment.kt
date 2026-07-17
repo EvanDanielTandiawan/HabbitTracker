@@ -29,6 +29,7 @@ class EditHabitFragment : Fragment() {
         binding = FragmentEditHabitBinding.inflate(inflater, container, false)
         return binding.root
     }
+    private val habitViewModel: ListViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,30 +51,24 @@ class EditHabitFragment : Fragment() {
         binding.listIcon.setAdapter(adapter)
 
         binding.btnEditHabit.setOnClickListener {
-            onClick(it)
+            val name = binding.txtInputHabitName.text.toString()
+            val desc = binding.txtInputDescription.text.toString()
+            val goal = binding.txtInputGoal.text.toString()
+            val unit = binding.txtInputUnit.text.toString()
+            val iconName = binding.listIcon.text.toString()
+
+            val newHabit = Habit(
+                name = name,
+                description = desc,
+                progress = 0,
+                goal = goal.toInt(),
+                unit = unit,
+                icon = iconName
+            )
+
+            viewModel.updateHabit(habit.uuid, habit)
+            findNavController().popBackStack()
         }
-    }
-
-    fun onClick(v: View) {
-
-        habit.name =
-            binding.txtInputHabitName.text.toString()
-
-        habit.description =
-            binding.txtInputDescription.text.toString()
-
-        habit.goal =
-            binding.txtInputGoal.text.toString().toIntOrNull() ?: 0
-
-        habit.unit =
-            binding.txtInputUnit.text.toString()
-
-        habit.icon =
-            binding.listIcon.text.toString()
-
-        viewModel.updateHabit(habit.uuid, habit)
-
-        findNavController().navigateUp()
     }
 
 }
